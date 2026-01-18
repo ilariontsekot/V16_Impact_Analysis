@@ -3,19 +3,17 @@ from __future__ import annotations
 import logging
 from typing import Dict, Iterable, Optional, Set, Tuple
 
-# Import de settings robusto (sirve tanto ejecutando scripts desde /src como desde Streamlit)
 try:
-    import settings  # cuando ejecutas: python src/etl_main.py
+    import settings  
 except ModuleNotFoundError:
-    from src import settings  # cuando ejecutas desde repo root como paquete
+    from src import settings  
 
-# PySpark opcional: el dashboard NO debe romper solo por importar utils
 try:
     from pyspark.sql import DataFrame
     from pyspark.sql import functions as F
 except ModuleNotFoundError:
-    DataFrame = object  # type: ignore
-    F = None  # type: ignore
+    DataFrame = object  
+    F = None  
 
 
 def get_logger(name: str = "v16") -> logging.Logger:
@@ -57,7 +55,6 @@ def apply_mappings(df, mapping_dict, source_col, target_col):
 
     mapping_expr = F.create_map(flat_list)
 
-    # ✅ evita el warning y es más futuro-proof
     df = df.withColumn(target_col, mapping_expr[F.col(source_col).cast("string")])
     return df
 
