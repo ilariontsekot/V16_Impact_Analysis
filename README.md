@@ -22,11 +22,6 @@ This project is intentionally focused on Data Engineering (data ingestion, trans
 ---
 
 ## Architecture
-
-Pipeline:
-
-Excel (DGT) → Bronze (raw CSV) → Silver (typing + Data Quality) → Gold (enrichment + KPIs) → Dashboard (Gold-only)
-
 <img src="images/architecture.png" width="1000">
 ---
 
