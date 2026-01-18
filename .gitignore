@@ -58,8 +58,6 @@ spark-warehouse/
 # ============================
 data/
 
-# Si quieres subir solo muestras, puedes crear data_sample/
-# y NO ignorarla
 !data_sample/
 
 # ============================
