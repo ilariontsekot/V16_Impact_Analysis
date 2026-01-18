@@ -1,0 +1,81 @@
+# ============================
+# Python
+# ============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.cache/
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+
+# ============================
+# OS / IDE
+# ============================
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+*.iml
+
+# ============================
+# Jupyter / Notebooks
+# ============================
+.ipynb_checkpoints/
+
+# ============================
+# Logs / temp
+# ============================
+*.log
+logs/
+tmp/
+temp/
+
+# ============================
+# Spark (local)
+# ============================
+metastore_db/
+derby.log
+spark-warehouse/
+*.crc
+
+# ============================
+# Data (NO subir datasets)
+# ============================
+data/
+
+# Si quieres subir solo muestras, puedes crear data_sample/
+# y NO ignorarla
+!data_sample/
+
+# ============================
+# Streamlit
+# ============================
+.streamlit/secrets.toml
+
+# ============================
+# Parquet / CSV / outputs (por si están fuera de data/)
+# ============================
+*.parquet
+*.csv
+*.xlsx
+
+# ============================
+# Mac / Linux extras
+# ============================
+*.swp
+*.swo
