@@ -46,7 +46,6 @@ def _is_dict(x) -> bool:
 
 
 def _is_empty_df(df: DataFrame) -> bool:
-    # Evita count() completo; dispara un job pequeño
     return len(df.take(1)) == 0
 
 
@@ -71,12 +70,10 @@ def _bronze_paths() -> List[str]:
 
     paths: List[str] = []
 
-    # 2024 (si existe el archivo concreto, usa ese; si no, el dir)
     paths.append(
         str(settings.BRONZE_2024_FILE) if settings.BRONZE_2024_FILE.exists() else str(p24)
     )
 
-    # 2026 opcional (comprobación RECURSIVA para tu estructura ANYO=2026/accidentes.csv)
     if p26.exists() and any(p26.rglob("*.csv")):
         paths.append(str(p26))
     else:
@@ -101,7 +98,6 @@ def _read_bronze(spark: SparkSession) -> DataFrame:
         .csv(paths)
     )
 
-    # trazabilidad extra
     df = df.withColumn("SOURCE_FILE", F.input_file_name())
     df = df.withColumn("INGEST_TS", F.current_timestamp())
 
