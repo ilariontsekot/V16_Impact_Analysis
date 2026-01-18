@@ -90,7 +90,6 @@ def _is_target(
         v = _safe_int(row.get("CONDICION_ILUMINACION"))
         ilum_ok = v is not None and v in target_ilum
 
-    # Si no hay targets definidos, no forzamos crítica
     if not target_meteo and not target_ilum and not target_zona:
         return False
 
@@ -130,7 +129,6 @@ def _apply_critique_adjustment(
     hg = _safe_int(row.get("TOTAL_HG24H")) or 0
     hl = _safe_int(row.get("TOTAL_HL24H")) or 0
 
-    # Si hay desglose, reconstruimos total base
     if has_mu and has_hg and has_hl:
         total = max(0, mu + hg + hl)
 
@@ -205,7 +203,6 @@ def main() -> None:
     if not rows_2024:
         raise SystemExit("El CSV 2024 está vacío.")
     if "ANYO" not in fieldnames:
-        # “infalible”: si el source no trae ANYO, lo añadimos.
         fieldnames = list(fieldnames) + ["ANYO"]
 
     # 2) Limpieza dura de 2026 (evita duplicados por runs previos) + guard rails
