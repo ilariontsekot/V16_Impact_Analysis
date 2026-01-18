@@ -9,7 +9,6 @@ from pathlib import Path
 PROJECT_NAME: str = "V16_Impact_Analysis"
 TIMEZONE: str = "Europe/Madrid"
 
-# settings.py lives in <repo>/src/settings.py -> parents[1] is repo root
 BASE_DIR: Path = Path(__file__).resolve().parents[1]
 DATA_DIR: Path = BASE_DIR / "data"
 
@@ -53,8 +52,6 @@ SPARK_APP_NAME: str = "V16_Impact_ETL"
 SPARK_SHUFFLE_PARTITIONS: int = 8
 SPARK_READ_RECURSIVE: bool = True
 
-# Para evitar “small files” extremos (mejora sin complicarte):
-# Reparte por partición lógica (ANYO) antes de escribir.
 WRITE_REPARTITION_BY_PARTITION_COL: bool = True
 
 # =========================
@@ -151,11 +148,8 @@ DOMAIN_CONSTRAINTS = {
 }
 
 # Política de fallo:
-# - Si faltan columnas requeridas -> STOP (esto es “serio”)
 FAIL_FAST_ON_MISSING_REQUIRED_COLUMNS: bool = True
 
-# - Si falla regla de negocio Gold (criticidad) -> NO ocultar nunca.
-#   True => rompe; False => publica con warning explícito.
 FAIL_ON_GOLD_RULES_ERROR: bool = False
 
 # =========================
