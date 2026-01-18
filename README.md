@@ -23,6 +23,7 @@ This project is intentionally focused on Data Engineering (data ingestion, trans
 
 ## Architecture
 <img src="images/architecture.png" width="1000">
+
 ---
 
 ## Repository structure
